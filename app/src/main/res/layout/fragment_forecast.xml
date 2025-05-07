@@ -1,6 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".ForecastFragment">
 
+    <!-- Location info section -->
+    <LinearLayout
+        android:id="@+id/layout_location_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@android:color/darker_gray"
+        android:padding="16dp">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <TextView
+            android:id="@+id/text_location_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Location Name"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/text_location_region_country"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Region, Country"
+            android:textSize="16sp"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="4dp" />
+
+    </LinearLayout>
+
+    <!-- Direct search section -->
+    <LinearLayout
+        android:id="@+id/layout_direct_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="8dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <EditText
+                android:id="@+id/input_location_id"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="ID de ubicación"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/input_days"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Días (1-14)"
+                android:inputType="number"
+                android:layout_marginStart="8dp"
+                android:minWidth="120dp" />
+
+            <Button
+                android:id="@+id/btn_search_forecast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Buscar"
+                android:layout_marginStart="8dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Forecast title -->
+    <TextView
+        android:id="@+id/text_forecast_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pronóstico para los próximos días"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Forecast list -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewForecast"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="8dp" />
+
+</LinearLayout>
+
+    <!--LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical" android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#66CCFF"
@@ -57,4 +157,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"/>
-    </LinearLayout>
+    </LinearLayout-->
+
+
+

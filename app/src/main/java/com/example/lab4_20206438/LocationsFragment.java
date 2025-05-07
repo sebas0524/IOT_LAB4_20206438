@@ -15,6 +15,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 import android.text.TextUtils;
 
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -223,11 +225,38 @@ public class LocationsFragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
         // Configurar clics en elementos de la lista
-        adapter.setOnItemClickListener(location -> {
+        /// ////////////////////////////////////////////////
+        /*adapter.setOnItemClickListener(location -> {
             Toast.makeText(getContext(),
                     "Seleccionado: " + location.getName() + ", " + location.getCountry(),
                     Toast.LENGTH_SHORT).show();
             // Aquí puedes implementar la navegación a otra pantalla con los detalles
+        });*/
+        /////////////////////////////////////////////////////////
+        adapter.setOnItemClickListener(location -> {
+            Toast.makeText(getContext(),
+                    "Seleccionado: " + location.getName() + ", " + location.getCountry(),
+                    Toast.LENGTH_SHORT).show();
+
+            // Aquí estamos creando la instancia de ForecastFragment y pasando los datos
+            ForecastFragment forecastFragment = ForecastFragment.newInstance(
+                    location.getId(),
+                    location.getName(),
+                    location.getRegion(),
+                    location.getCountry(),
+                    14 // Puedes pasar los días que prefieras, o incluso hacer que el usuario los elija
+            );
+
+            // Realizamos la navegación al fragmento de pronóstico
+            /*getParentFragmentManager().beginTransaction()
+                    .replace(R.id.nav_host_fragment, forecastFragment) // Asegúrate de que este ID sea el correcto
+                    .addToBackStack(null) // Esto agrega el fragmento al back stack para que el botón "atrás" funcione
+                    .commit();*/
+            // Usar NavController para navegar
+            NavController navController = NavHostFragment.findNavController(LocationsFragment.this);
+            // Navegar al ForecastFragment usando la acción definida en el gráfico de navegación
+            navController.navigate(R.id.action_locationsFragment_to_forecastFragment, forecastFragment.getArguments());
+
         });
 
         // Configurar botón de búsqueda

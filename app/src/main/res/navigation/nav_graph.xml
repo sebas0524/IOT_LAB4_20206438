@@ -6,7 +6,13 @@
     <fragment
         android:id="@+id/locationFragment"
         android:name="com.example.lab4_20206438.LocationsFragment"
-        android:label="LocationFragment" />
+        android:label="LocationFragment">
+
+        <action
+            android:id="@+id/action_locationsFragment_to_forecastFragment"
+            app:destination="@id/forecastFragment" />
+    </fragment>
+
 
     <fragment
         android:id="@+id/forecastFragment"
