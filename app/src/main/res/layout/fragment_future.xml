@@ -4,6 +4,15 @@
     android:background="#66CCFF"
     android:padding="16dp">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pronóstico Futuro"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:textSize="22sp"
+        android:layout_marginBottom="10dp"/>
+
     <!-- Buscadores: ID de Locación y día de interés -->
     <LinearLayout
         android:layout_width="match_parent"
