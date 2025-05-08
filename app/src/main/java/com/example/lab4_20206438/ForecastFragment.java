@@ -160,7 +160,6 @@ public class ForecastFragment extends Fragment implements SensorEventListener {
             layoutDirectSearch.setVisibility(View.VISIBLE);
         }
 
-        // Configurar el botón de búsqueda (tanto para la primera carga como para búsquedas adicionales)
         btnSearchForecast.setOnClickListener(v -> {
             String id = inputLocationId.getText().toString().trim();
             String daysStr = inputDays.getText().toString().trim();
