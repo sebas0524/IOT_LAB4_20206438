@@ -113,6 +113,110 @@
 
 </LinearLayout>
 
+<!--LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#66CCFF"
+    tools:context=".ForecastFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pronósticos del Clima"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:textSize="22sp"
+        android:gravity="center"
+        android:layout_marginBottom="10dp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="8dp">
+
+        <EditText
+            android:id="@+id/input_location_id"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:hint="ID de ubicación"
+            android:background="@drawable/rounded_input"
+            android:inputType="number"
+            android:padding="10dp" />
+
+        <EditText
+            android:id="@+id/input_days"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:hint="Días (1-14)"
+            android:inputType="number"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/rounded_input"
+            android:minWidth="120dp"
+            android:padding="10dp" />
+
+        <Button
+            android:id="@+id/btn_search_forecast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Buscar"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="#6600CC"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/layout_location_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@android:color/darker_gray"
+        android:padding="16dp"
+        android:layout_marginTop="8dp">
+
+        <TextView
+            android:id="@+id/text_location_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Location Name"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/text_location_region_country"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Region, Country"
+            android:textSize="16sp"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="4dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/text_forecast_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pronóstico para los próximos días"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewForecast"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="8dp" />
+</LinearLayout-->
+
 
 
 
