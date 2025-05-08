@@ -18,9 +18,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.lab4_20206438.R;
-import com.example.lab4_20206438.ForecastAdapter;
-import com.example.lab4_20206438.ForecastItem;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,41 +26,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
-
-/*public class ForecastFragment extends Fragment {
-
-    private RecyclerView recyclerView;
-    private ForecastAdapter adapter;
-    private List<ForecastItem> forecastList;
-
-    public ForecastFragment() {
-        // Constructor vacío requerido
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_forecast, container, false);
-
-        recyclerView = view.findViewById(R.id.recycler_forecast);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        forecastList = generarDatosPrueba();
-        adapter = new ForecastAdapter(forecastList);
-        recyclerView.setAdapter(adapter);
-
-        return view;
-    }
-
-    private List<ForecastItem> generarDatosPrueba() {
-        List<ForecastItem> lista = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            lista.add(new ForecastItem("Ciudad " + i, (i + 1) + " días"));
-        }
-        return lista;
-    }
-}*/
-// ForecastFragment.java
 
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -70,30 +33,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.DefaultRetryPolicy;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ForecastFragment extends Fragment {
 
@@ -129,12 +74,9 @@ public class ForecastFragment extends Fragment {
     private int days = 14; // Default to maximum days
 
     public ForecastFragment() {
-        // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of this fragment with parameters.
-     */
+
     public static ForecastFragment newInstance(String locationId, String locationName,
                                                String locationRegion, String locationCountry, int days) {
         ForecastFragment fragment = new ForecastFragment();
@@ -172,7 +114,6 @@ public class ForecastFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Initialize the request queue
         requestQueue = Volley.newRequestQueue(requireContext());
 
         // Initialize views
@@ -185,29 +126,27 @@ public class ForecastFragment extends Fragment {
         inputDays = view.findViewById(R.id.input_days);
         btnSearchForecast = view.findViewById(R.id.btn_search_forecast);
 
-        // Setup RecyclerView
+
         adapter = new ForecastAdapter(forecastList);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
 
-        // Determine which mode to use
+
         if (locationId != null && !locationId.isEmpty()) {
-            // We came from location selection
+
             layoutLocationInfo.setVisibility(View.VISIBLE);
             layoutDirectSearch.setVisibility(View.GONE);
 
-            // Set location info
+
             textLocationName.setText(locationName);
             textLocationRegionCountry.setText(String.format("%s, %s", locationRegion, locationCountry));
 
-            // Fetch forecast for this location
+
             fetchForecast(locationId, days);
         } else {
-            // Direct search mode
             layoutLocationInfo.setVisibility(View.GONE);
             layoutDirectSearch.setVisibility(View.VISIBLE);
 
-            // Setup search button
             btnSearchForecast.setOnClickListener(v -> {
                 String id = inputLocationId.getText().toString().trim();
                 String daysStr = inputDays.getText().toString().trim();
@@ -240,7 +179,6 @@ public class ForecastFragment extends Fragment {
         String url = BASE_URL + "?key=" + API_KEY + "&q=id:" + locationId + "&days=" + days;
         Log.d(TAG, "Forecast URL: " + url);
 
-        // Show loading message
         Toast.makeText(getContext(), "Cargando pronóstico...", Toast.LENGTH_SHORT).show();
 
         JsonObjectRequest request = new JsonObjectRequest(
@@ -252,7 +190,6 @@ public class ForecastFragment extends Fragment {
                     forecastList.clear();
 
                     try {
-                        // Update location info if in direct search mode
                         if (layoutDirectSearch.getVisibility() == View.VISIBLE) {
                             JSONObject location = response.getJSONObject("location");
                             layoutLocationInfo.setVisibility(View.VISIBLE);
@@ -262,7 +199,6 @@ public class ForecastFragment extends Fragment {
                                     location.getString("country")));
                         }
 
-                        // Process forecast days
                         JSONObject forecast = response.getJSONObject("forecast");
                         JSONArray forecastDays = forecast.getJSONArray("forecastday");
 
@@ -307,17 +243,12 @@ public class ForecastFragment extends Fragment {
                 }
         );
 
-        // Configure retry policy
         request.setRetryPolicy(new DefaultRetryPolicy(
-                10000,  // 10 seconds timeout
-                2,      // Max retries
+                10000,
+                2,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
         ));
-
-        // Add tag to request
         request.setTag(TAG);
-
-        // Add to queue
         requestQueue.add(request);
     }
 }

@@ -12,40 +12,67 @@ import com.example.lab4_20206438.FuturoItem;
 
 import java.util.List;
 
-public class FuturoAdapter extends RecyclerView.Adapter<FuturoAdapter.ViewHolder> {
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
-    private List<FuturoItem> deporteList;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
-    public FuturoAdapter(List<FuturoItem> deporteList) {
-        this.deporteList = deporteList;
+import java.util.List;
+
+public class FuturoAdapter extends RecyclerView.Adapter<FuturoAdapter.FuturoViewHolder> {
+
+    private List<FuturoItem> futuroItems;
+
+    public FuturoAdapter(List<FuturoItem> futuroItems) {
+        this.futuroItems = futuroItems;
     }
 
     @NonNull
     @Override
-    public FuturoAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_future, parent, false);
-        return new ViewHolder(v);
+    public FuturoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_future, parent, false);
+        return new FuturoViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FuturoAdapter.ViewHolder holder, int position) {
-        FuturoItem item = deporteList.get(position);
-        holder.txtPartido.setText(item.getPartido());
-        holder.txtCiudad.setText(item.getCiudad());
+    public void onBindViewHolder(@NonNull FuturoViewHolder holder, int position) {
+        FuturoItem item = futuroItems.get(position);
+        holder.tvMatch.setText(item.getMatch());
+        holder.tvTournament.setText(item.getTournament());
+        holder.tvStadium.setText("Estadio: " + item.getStadium());
+
+        String location = item.getCountry();
+        if (!item.getRegion().isEmpty()) {
+            location = item.getRegion() + ", " + location;
+        }
+        holder.tvLocation.setText("Ubicación: " + location);
+
+        holder.tvDateTime.setText("Fecha y hora: " + item.getStart());
     }
 
     @Override
     public int getItemCount() {
-        return deporteList.size();
+        return futuroItems.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView txtPartido, txtCiudad;
+    public void updateData(List<FuturoItem> newItems) {
+        this.futuroItems = newItems;
+        notifyDataSetChanged();
+    }
 
-        public ViewHolder(View itemView) {
+    public static class FuturoViewHolder extends RecyclerView.ViewHolder {
+        TextView tvMatch, tvTournament, tvStadium, tvLocation, tvDateTime;
+
+        public FuturoViewHolder(@NonNull View itemView) {
             super(itemView);
-            txtPartido = itemView.findViewById(R.id.txt_partido);
-            txtCiudad = itemView.findViewById(R.id.txt_ciudad_partido);
+            tvMatch = itemView.findViewById(R.id.tvMatch);
+            tvTournament = itemView.findViewById(R.id.tvTournament);
+            tvStadium = itemView.findViewById(R.id.tvStadium);
+            tvLocation = itemView.findViewById(R.id.tvLocation);
+            tvDateTime = itemView.findViewById(R.id.tvDateTime);
         }
     }
 }

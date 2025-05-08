@@ -12,63 +12,6 @@ import com.example.lab4_20206438.LocationItem;
 
 import java.util.List;
 
-/*public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.ViewHolder> {
-
-    private List<LocationItem> locationList;
-
-    public LocationAdapter(List<LocationItem> locationList) {
-        this.locationList = locationList;
-    }
-
-    @NonNull
-    @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_location, parent, false);
-        return new ViewHolder(view);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        LocationItem item = locationList.get(position);
-        holder.txtId.setText("ID: " + item.getId());
-        holder.txtName.setText("Ciudad: " + item.getName());
-        holder.txtRegion.setText("Región: " + item.getRegion());
-        holder.txtCountry.setText("País: " + item.getCountry());
-    }
-
-    @Override
-    public int getItemCount() {
-        return locationList.size();
-    }
-
-    public void updateList(List<LocationItem> newList) {
-        locationList.clear();
-        locationList.addAll(newList);
-        notifyDataSetChanged();
-    }
-
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView txtId, txtName, txtRegion, txtCountry;
-
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            txtId = itemView.findViewById(R.id.txt_id);
-            txtName = itemView.findViewById(R.id.txt_name);
-            txtRegion = itemView.findViewById(R.id.txt_region);
-            txtCountry = itemView.findViewById(R.id.txt_country);
-        }
-    }
-}*/
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.List;
 
 public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.LocationViewHolder> {
 

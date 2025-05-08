@@ -1,58 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
     android:background="#66CCFF"
-    android:padding="16dp">
+    tools:context=".FuturoFragment">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Pronóstico Futuro"
+        android:text="Próximos Partidos"
         android:textStyle="bold"
         android:textColor="#000000"
         android:textSize="22sp"
-        android:layout_marginBottom="10dp"/>
+        android:gravity="center"
+        android:layout_marginBottom="10dp" />
 
-    <!-- Buscadores: ID de Locación y día de interés -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/input_location_future"
-            android:hint="idLocación"
+            android:id="@+id/etLocation"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_height="40dp"
-            android:background="@drawable/rounded_input"
-            android:padding="10dp"/>
-
-        <EditText
-            android:id="@+id/input_day_interest"
-            android:hint="día de Interés"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="40dp"
-            android:layout_marginStart="8dp"
-            android:background="@drawable/rounded_input"
-            android:padding="10dp"/>
+            android:hint="Ingrese la ubicación"
+            android:padding="12dp"
+            android:background="@drawable/rounded_input" />
 
         <Button
-            android:id="@+id/btn_search_future"
-            android:text="Buscar"
+            android:id="@+id/btnSearch"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:backgroundTint="#6600CC"
-            android:textColor="#FFFFFF"/>
+            android:text="Buscar" />
     </LinearLayout>
 
-    <!-- Lista -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_future"
+    <TextView
+        android:id="@+id/tvEmptyResults"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_height="wrap_content"
+        android:text="No hay partidos disponibles para esta ubicación"
+        android:gravity="center"
+        android:layout_marginTop="16dp"
+        android:visibility="gone" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvFootballMatches"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp" />
+
 </LinearLayout>

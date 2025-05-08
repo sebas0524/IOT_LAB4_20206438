@@ -5,9 +5,65 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
+    android:background="#66CCFF"
     tools:context=".ForecastFragment">
 
-    <!-- Location info section -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pronósticos del Clima"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:textSize="22sp"
+        android:gravity="center"
+        android:layout_marginBottom="10dp" />
+
+
+
+    <LinearLayout
+        android:id="@+id/layout_direct_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="8dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <EditText
+                android:id="@+id/input_location_id"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:hint="ID de ubicación"
+                android:background="@drawable/rounded_input"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/input_days"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:hint="Días (1-14)"
+                android:inputType="number"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/rounded_input"
+                android:minWidth="120dp" />
+
+            <Button
+                android:id="@+id/btn_search_forecast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Buscar"
+                android:layout_marginStart="8dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
     <LinearLayout
         android:id="@+id/layout_location_info"
         android:layout_width="match_parent"
@@ -36,50 +92,7 @@
 
     </LinearLayout>
 
-    <!-- Direct search section -->
-    <LinearLayout
-        android:id="@+id/layout_direct_search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="8dp"
-        android:visibility="gone">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="8dp">
-
-            <EditText
-                android:id="@+id/input_location_id"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="ID de ubicación"
-                android:inputType="number" />
-
-            <EditText
-                android:id="@+id/input_days"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="Días (1-14)"
-                android:inputType="number"
-                android:layout_marginStart="8dp"
-                android:minWidth="120dp" />
-
-            <Button
-                android:id="@+id/btn_search_forecast"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Buscar"
-                android:layout_marginStart="8dp" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <!-- Forecast title -->
     <TextView
         android:id="@+id/text_forecast_title"
         android:layout_width="match_parent"
@@ -90,7 +103,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp" />
 
-    <!-- Forecast list -->
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewForecast"
         android:layout_width="match_parent"
@@ -100,64 +113,6 @@
 
 </LinearLayout>
 
-    <!--LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical" android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#66CCFF"
-        android:padding="16dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pronósticos del Clima"
-            android:textStyle="bold"
-            android:textColor="#000000"
-            android:textSize="22sp"
-            android:layout_marginBottom="10dp"/>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
-
-            <EditText
-                android:id="@+id/input_location_id"
-                android:hint="idLocacion"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="40dp"
-                android:background="@drawable/rounded_input"
-                android:padding="10dp"/>
-
-            <EditText
-                android:id="@+id/input_days"
-                android:hint="#días Forecast"
-                android:inputType="number"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="40dp"
-                android:layout_marginStart="8dp"
-                android:background="@drawable/rounded_input"
-                android:padding="10dp"/>
-
-            <Button
-                android:id="@+id/btn_search_forecast"
-                android:text="Buscar"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginStart="8dp"
-                android:backgroundTint="#6600CC"
-                android:textColor="#FFFFFF"/>
-        </LinearLayout>
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_forecast"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
-    </LinearLayout-->
 
 
 
