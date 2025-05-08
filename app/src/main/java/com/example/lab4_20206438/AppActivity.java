@@ -18,7 +18,6 @@ public class AppActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.app_activity);
 
-        // Vincula NavController con el FragmentContainerView
         NavHostFragment navHostFragment = (NavHostFragment)
                 getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
         navController = navHostFragment.getNavController();
@@ -46,6 +45,6 @@ public class AppActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        finish(); // Vuelve directamente al MainActivity
+        finish();
     }
 }
